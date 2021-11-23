@@ -13,25 +13,25 @@ Struktur Folder:
 
 Target:
 
-- [ ] Lecture - React Class Component
-- [ ] State
-- [ ] Props (state, function)
-- [ ] Event Handling (onClick, onChange, onSubmit)
-- [ ] Conditional in React
-- [ ] Looping in React
-- [ ] Lifecycle component, (componentDidmount)
-- [ ] Create server (json-server)
+- [ X ] Lecture - React Class Component
+- [ X ] State
+- [ X ] Props (state, function)
+- [ X ] Event Handling (onClick, onChange, onSubmit)
+- [ X ] Conditional in React
+- [ X ] Looping in React
+- [ X ] Lifecycle component, (componentDidmount)
+- [ X ] Create server (json-server)
 - [ ] Create react app for client-user (Styling)
 - [ ] Create react app for client-admin (CRUD)
-- [ ] Menentukan Thema Aplikasi
+- [ X ] Menentukan Thema Aplikasi
 - [ ] Menentukan Design dan pemilihan CSS Framework
 
 **Report:**
 
 ...
 
-> contoh: Hari ini saya belajar React Component. Saya memahami bagaimana cara React bekerja. Lifecycle yang sudah saya coba adalah componentDidMount yang digunakan untuk fetch data dst. Namun saya belum mencoba menggunakan onSubmit dikarenakan data yang didapat belum sesuai.
-> Pada tugas ini, saya memilih Tema A dengan mengambil referensi dari B. Saya juga akan menggunakan CSS Framework yaitu Tailwind CSS
+> contoh: Hari ini saya belajar React Component. Saya memahami bagaimana cara React bekerja. Lifecycle yang sudah saya coba adalah componentDidMount yang digunakan untuk fetch data. Namun saya belum mencoba seluruh target hari ini.
+> Pada tugas ini, saya memilih Tema Brand ShowCase dengan mengambil referensi dari website Deus X Machina Canggu.
 
 ## W1D2
 
