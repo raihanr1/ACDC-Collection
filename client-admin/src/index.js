@@ -1,16 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import DeleteProduct from "./views/Delete/DeleteProduct";
-import ReadProduct from "./views/Read/GetProduct";
-import CreateProduct from "./views/Create/CreateProduct";
-import UpdateProduct from "./views/Update/UpdateProduct";
+import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    {<CreateProduct />}, {<DeleteProduct />}, {<ReadProduct />},{" "}
-    {<UpdateProduct />}
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
