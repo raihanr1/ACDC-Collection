@@ -1,0 +1,19 @@
+.login {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background-image: url("https://static6.depositphotos.com/1177973/665/i/600/depositphotos_6659883-stock-photo-pile-of-clothes.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.login-heading {
+  font-weight: 300;
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+}

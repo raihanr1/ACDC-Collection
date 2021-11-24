@@ -1,5 +1,5 @@
 {
-  "User": [
+  "user": [
     {
       "id": 1,
       "username": "raihanr1",
@@ -19,7 +19,7 @@
       "address": "Bogor"
     }
   ],
-  "Category": [
+  "category": [
     {
       "id": 1,
       "name": "Jacket",
@@ -28,12 +28,12 @@
     },
     {
       "id": 2,
-      "name": "mama",
+      "name": "Clothes",
       "createdAt": "",
       "updatedAt": ""
     }
   ],
-  "Image": [
+  "image": [
     {
       "id": 1,
       "ProductId": 1,
@@ -42,12 +42,12 @@
       "updatedAt": ""
     }
   ],
-  "Product": [
+  "product": [
     {
       "id": 1,
       "name": "some comment",
       "slug": 1,
-      "description": "The Mac Work Shirt is a part of the Maritza Autumn 2021 Mens Collection.",
+      "description": "The Mac Work Shirt is a part of the ACDC Autumn 2021 Mens Collection.",
       "price": 50000,
       "mainImg": "https://cdn.shopify.com/s/files/1/0554/7317/products/Mac-Work-Shirt_400x.jpg?v=1633427278",
       "CategoryId": 1,
