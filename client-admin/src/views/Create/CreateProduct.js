@@ -1,117 +1,166 @@
 import "./index.css";
-import React from "react";
-class Create extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      name: null,
-      description: null,
-      price: null,
-      mainImg: null,
-      CategoryId: null,
-      category: [],
+import useFetch from "../../helper/HooksFetch";
+import { useState } from "react";
+import postAPI from "../../helper/PostAPI";
+export default function CreateProduct() {
+  let [category, isLoadingFetch, isError] = useFetch("/Category");
+  const [loadingForm, setLoadingForm] = useState(false);
+  let [inputProduct, setInput] = useState({
+    name: "",
+    description: "",
+    price: "",
+    mainImg: "",
+    CategoryId: "",
+  });
+  let handleInputNewProduct = (e) => {
+    let form = e.target.name;
+    let input = {
+      ...inputProduct,
     };
-  }
-  componentDidMount = () => {
-    fetch("http://localhost:3000/Category", {
-      method: "GET",
-    })
-      .then((response) => {
-        if (response.status !== 200) {
-          throw response;
-        }
-
-        // console.log(response.data, ">>>data");
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data, ">>>>");
-        this.setState({
-          category: data,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  handleChangeName = (e) => {
-    this.setState({
-      name: e.target.value,
-    });
-  };
-  handleChangeDescription = (e) => {
-    this.setState({
-      description: e.target.value,
-    });
-  };
-  handleChangePrice = (e) => {
-    this.setState({
-      price: e.target.value,
-    });
-  };
-  handleChangeMainImg = (e) => {
-    this.setState({
-      mainImg: e.target.value,
-    });
-  };
-  handleChangeCategoryId = (e) => {
-    this.setState({
-      CategoryId: e.target.value,
-    });
-  };
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    let obj = {
-      name: this.state.name,
-      price: this.state.price,
-      mainImg: this.state.mainImg,
-      CategoryId: this.state.CategoryId,
-    };
-    if (!obj.CategoryId) {
-      obj.CategoryId = this.state.category[0].id;
+    if (Number(e.target.value)) {
+      input[form] = +e.target.value;
+    } else {
+      input[form] = e.target.value;
     }
-    console.log(obj, "asupp");
+    setInput(input);
   };
-  render() {
-    let category = this.state.category.map((el) => {
-      return (
-        <option key={el.id} value={el.id}>
-          {el.name}
-        </option>
-      );
-    });
+  let handleSubmitFormProduct = (e) => {
+    e.preventDefault();
+    setLoadingForm(false);
+  };
+  if (isError) {
     return (
-      <div>
-        <h3>Create New Product</h3>
-        <form onSubmit={this.handleSubmit}>
-          <label>Name</label> <br></br>
-          <input
-            type="text"
-            name="name"
-            onChange={this.handleChangeName}
-          ></input>{" "}
-          <br></br>
-          <label>Description</label> <br></br>
-          <input
-            type="text"
-            onChange={this.handleChangeDescription}
-          ></input>{" "}
-          <br></br>
-          <label>Price</label> <br></br>
-          <input type="number" onChange={this.handleChangePrice}></input>{" "}
-          <br></br>
-          <label>Image URL</label> <br></br>
-          <input type="text" onChange={this.handleChangeMainImg}></input>{" "}
-          <br></br>
-          <label>Category</label> <br></br>
-          <select onChange={this.handleChangeCategoryId}>{category}</select>
-          <br></br>
-          <input type="submit"></input>
-        </form>
+      <div
+        style={{
+          display: "flex",
+          marginTop: "250px",
+          justifyContent: "center",
+          height: "689px",
+        }}
+      >
+        <div
+          className="spinner-grow text-info mr-2"
+          role="status"
+          style={{ width: "200px", height: "200px" }}
+        >
+          <p
+            style={{ textAlign: "center", color: "#e6fff7", marginTop: "90px" }}
+          >
+            Error BOSS!!!
+          </p>
+        </div>
       </div>
     );
   }
+  if (isLoadingFetch) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          marginTop: "250px",
+          justifyContent: "center",
+          height: "689px",
+        }}
+      >
+        <div
+          className="spinner-grow text-info mr-2"
+          role="status"
+          style={{ width: "200px", height: "200px" }}
+        >
+          <p
+            style={{ textAlign: "center", color: "#e6fff7", marginTop: "90px" }}
+          >
+            Loading...
+          </p>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div className="registration-form">
+      <form onSubmit={handleSubmitFormProduct}>
+        <span>
+          <h2 style={{ textAlign: "center", color: "black" }}>
+            Create New product
+          </h2>
+        </span>
+        <div className="form-group">
+          <input
+            onChange={handleInputNewProduct}
+            type="text"
+            className="form-control item"
+            name="name"
+            placeholder="Name"
+            value={inputProduct.name}
+          ></input>
+        </div>
+        <div className="form-group">
+          <input
+            onChange={handleInputNewProduct}
+            type="text"
+            className="form-control item"
+            name="description"
+            placeholder="Description"
+            value={inputProduct.description}
+          ></input>
+        </div>
+        <div className="form-group">
+          <input
+            onChange={handleInputNewProduct}
+            type="number"
+            className="form-control item"
+            name="price"
+            placeholder="Price"
+            value={inputProduct.price}
+          ></input>
+        </div>
+        <div className="form-group">
+          <input
+            onChange={handleInputNewProduct}
+            type="text"
+            className="form-control item"
+            name="mainImg"
+            placeholder="Image-URL"
+            value={inputProduct.mainImg}
+          ></input>
+        </div>
+        <div className="form-group">
+          <select
+            onChange={handleInputNewProduct}
+            className="form-select"
+            aria-label="Default select example"
+            name="CategoryId"
+          >
+            {category.map((el) => {
+              return (
+                <option key={el.id} value={el.id}>
+                  {el.name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+        <div className="form-group">
+          {loadingForm ? (
+            <button
+              className="btn btn-block create-account"
+              type="button"
+              disabled
+            >
+              <span
+                className="spinner-grow spinner-grow-sm"
+                role="status"
+                aria-hidden="true"
+              ></span>
+              Loading...
+            </button>
+          ) : (
+            <button type="submit" className="btn btn-block create-account">
+              Add
+            </button>
+          )}
+        </div>
+      </form>
+    </div>
+  );
 }
-
-export default Create;
