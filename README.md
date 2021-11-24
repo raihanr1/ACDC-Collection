@@ -21,32 +21,35 @@ Target:
 - [ X ] Looping in React
 - [ X ] Lifecycle component, (componentDidmount)
 - [ X ] Create server (json-server)
-- [ ] Create react app for client-user (Styling)
-- [ ] Create react app for client-admin (CRUD)
+- [ X ] Create react app for client-user (Styling)
+- [ X ] Create react app for client-admin (CRUD)
 - [ X ] Menentukan Thema Aplikasi
-- [ ] Menentukan Design dan pemilihan CSS Framework
+- [ X ] Menentukan Design dan pemilihan CSS Framework
 
 **Report:**
 
 ...
 
-> contoh: Hari ini saya belajar React Component. Saya memahami bagaimana cara React bekerja. Lifecycle yang sudah saya coba adalah componentDidMount yang digunakan untuk fetch data. Namun saya belum mencoba seluruh target hari ini.
+> Hari ini saya belajar React Component. Saya memahami bagaimana cara React bekerja. Lifecycle yang sudah saya coba adalah componentDidMount yang digunakan untuk fetch data.
+> Saya memilih CSS Framework bootstrap
 > Pada tugas ini, saya memilih Tema Brand ShowCase dengan mengambil referensi dari website Deus X Machina Canggu.
 
 ## W1D2
 
 Target:
 
-- [ ] Lecture - React Function Component & Hooks
-- [ ] Membuat state dengan useState
-- [ ] Lifecycle dengan useEffect
-- [ ] Custom hooks
-- [ ] Event Handling (onClick, onChange, onSubmit)
+- [ X ] Lecture - React Function Component & Hooks
+- [ X ] Membuat state dengan useState
+- [ X ] Lifecycle dengan useEffect
+- [ X ] Custom hooks
+- [ X ] Event Handling (onClick, onChange, onSubmit)
 - [ ] Refactoring user-side & admin-side
 
 **Report:**
 
 ...
+
+> Hari ini saya belajar React Component lebih lanjut lagi. Saya memahami bagaimana cara React bekerja lebih lanjut. Mencoba functional component, lifecycle, custom hooks, dan cara kerja di setiap bagian fungsi dari bagian-bagian react
 
 ## W1D3
 
