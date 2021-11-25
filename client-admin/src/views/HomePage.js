@@ -1,17 +1,22 @@
 import { Link, useNavigate } from "react-router-dom";
 import TableColumn from "../components/TableColumn";
 import TableRow from "../components/TableRow";
-import useFetch from "../helper/HooksFetch";
 import { useSelector, useDispatch } from "react-redux";
-
+import { getAllProduct } from "../store/root-reducer/action/actionProduct";
+import { useEffect } from "react";
 export default function HomePage() {
-  const [data, isLoadingFetch, isError] = useFetch("/product");
-
+  const dispatch = useDispatch();
+  const { product, isLoadingProduct, isErrorProduct } = useSelector(
+    (state) => state.product
+  );
+  useEffect(() => {
+    dispatch(getAllProduct());
+  }, []);
   let navigate = useNavigate();
   let handleLogOutUser = (e) => {
     localStorage.removeItem("access_token");
   };
-  if (isError) {
+  if (isErrorProduct) {
     return (
       <div
         style={{
@@ -36,7 +41,7 @@ export default function HomePage() {
       </div>
     );
   }
-  if (isLoadingFetch) {
+  if (isLoadingProduct) {
     return (
       <div
         style={{
@@ -170,11 +175,11 @@ export default function HomePage() {
               <table className="table table-striped" id="table1">
                 <thead>
                   <tr>
-                    <TableRow row={"masuk"} />
+                    <TableRow />
                   </tr>
                 </thead>
                 <tbody>
-                  {data.map((el) => {
+                  {product.map((el) => {
                     return <TableColumn key={el.id} product={el} />;
                   })}
                 </tbody>
