@@ -1,11 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
-import Navbar from "../components/NavbarPage";
 import TableColumn from "../components/TableColumn";
 import TableRow from "../components/TableRow";
 import useFetch from "../helper/HooksFetch";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function HomePage() {
   const [data, isLoadingFetch, isError] = useFetch("/product");
+
   let navigate = useNavigate();
   let handleLogOutUser = (e) => {
     localStorage.removeItem("access_token");
@@ -16,6 +17,7 @@ export default function HomePage() {
         style={{
           display: "flex",
           marginTop: "250px",
+          marginLeft: "270px",
           justifyContent: "center",
           height: "689px",
         }}
@@ -40,6 +42,7 @@ export default function HomePage() {
         style={{
           display: "flex",
           marginTop: "250px",
+          marginLeft: "270px",
           justifyContent: "center",
           height: "689px",
         }}
