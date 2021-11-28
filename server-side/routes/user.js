@@ -4,7 +4,6 @@ const Controller = require("../controllers/userController");
 const { errorHandle } = require("../middleware/errorHandle");
 router.get("/", Controller.getAllProducts);
 router.get("/categories", Controller.getAllCategories);
-router.get("/images");
 router.use(errorHandle);
 
 module.exports = router;
