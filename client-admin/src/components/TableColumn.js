@@ -37,6 +37,11 @@ export default function TableColumn(props) {
         >
           Delete
         </span>
+        <Link to={`/${props.product.slug}`} product={props.product}>
+          <span className="badge bg-success" style={{ marginLeft: "5px" }}>
+            See Detail
+          </span>
+        </Link>
       </td>
     </tr>
   );
