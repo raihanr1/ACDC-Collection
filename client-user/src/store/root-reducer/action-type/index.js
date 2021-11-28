@@ -8,7 +8,11 @@ export const HANDLE_ACTION_GET_ALL_PRODUCT_BY_ID_LOADING =
 export const HANDLE_ACTION_GET_ALL_PRODUCT_BY_ID_ERROR =
   "product/errorProductById";
 
+export const HANDLE_GET_CATEGORY = "produt/getCategory";
+
 export const HANDLE_ACTION_GET_ALL_IMAGE_PRODUCT = "product/getAllImage";
 export const HANDLE_ACTION_GET_ALL_IMAGE_PRODUCT_LOADING =
   "product/loadingImage";
 export const HANDLE_ACTION_GET_ALL_IMAGE_PRODUCT_ERROR = "product/errorImage";
+
+export const HANDLE_FILTER_CATEGORY = "filter/category";

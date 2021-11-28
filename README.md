@@ -43,7 +43,7 @@ Target:
 - [ X ] Lifecycle dengan useEffect
 - [ X ] Custom hooks
 - [ X ] Event Handling (onClick, onChange, onSubmit)
-- [ ] Refactoring user-side & admin-side
+- [ X ] Refactoring user-side & admin-side
 
 **Report:**
 
@@ -55,14 +55,14 @@ Target:
 
 Target:
 
-- [ ] Lecture - React-Router
-- [ ] Membuat router user-side (min: home, detail)
-- [ ] Membuat router admin-side (min: login, add admin, CRUD main entitas, CRUD another entitas)
-- [ ] Membuat privateRoute untuk admin
-- [ ] Lecture - Redux
-- [ ] Create Store
-- [ ] Create Reducer
-- [ ] Create Action
+- [ X ] Lecture - React-Router
+- [ X ] Membuat router user-side (min: home, detail)
+- [ X ] Membuat router admin-side (min: login, add admin, CRUD main entitas, CRUD another entitas)
+- [ X ] Membuat privateRoute untuk admin
+- [ X ] Lecture - Redux
+- [ X ] Create Store
+- [ X ] Create Reducer
+- [ X ] Create Action
 
 **Report:**
 
@@ -72,9 +72,9 @@ Target:
 
 Target:
 
-- [ ] Lecture - Redux-thunk (handle async)
-- [ ] Create server using express.js, postgreSQL and Sequelize
-- [ ] Describe associations between tables
+- [ X ] Lecture - Redux-thunk (handle async)
+- [ X ] Create server using express.js, postgreSQL and Sequelize
+- [ X ] Describe associations between tables
 
 **Report:**
 

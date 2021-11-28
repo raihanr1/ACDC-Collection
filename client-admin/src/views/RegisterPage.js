@@ -1,15 +1,25 @@
-import { useState } from "react";
-import postAPI from "../helper/PostAPI";
-import CSS from "./Create/index.css";
+import { useEffect, useState } from "react";
+import baseUrl from "../BaseUrlConfig";
+import "./Create/index.css";
+import Swal from "sweetalert2";
+import { useDispatch, useSelector } from "react-redux";
+import { userRegister } from "../store/root-reducer/action/actionUser";
+import {
+  ACTION_USER_REGISTER_SUCCESS,
+  ACTION_USER_REGISTER_ERROR,
+} from "../store/root-reducer/action-type/actionType";
 export default function RegisterPage() {
   let [inputUser, setInput] = useState({
     username: "",
     email: "",
     password: "",
-    phone: "",
+    phoneNumber: "",
     address: "",
   });
-  const [loadingForm, setLoading] = useState();
+  const { successRegister, loadingRegister, errorRegister } = useSelector(
+    (state) => state.user
+  );
+  const dispatch = useDispatch();
   let handleInputNewAdmin = (e) => {
     let input = {
       ...inputUser,
@@ -17,9 +27,44 @@ export default function RegisterPage() {
     input[e.target.name] = e.target.value;
     setInput(input);
   };
+  useEffect(() => {
+    if (errorRegister) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: errorRegister.message,
+      });
+      dispatch({
+        type: ACTION_USER_REGISTER_ERROR,
+        payload: null,
+      });
+    }
+  }, [errorRegister]);
+  useEffect(() => {
+    if (successRegister) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Your account has been created",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      setInput({
+        username: "",
+        email: "",
+        password: "",
+        phoneNumber: "",
+        address: "",
+      });
+      dispatch({
+        type: ACTION_USER_REGISTER_SUCCESS,
+        payload: false,
+      });
+    }
+  }, [successRegister]);
   let handleSubmitFormRegister = (e) => {
     e.preventDefault();
-    console.log(inputUser);
+    dispatch(userRegister(inputUser));
   };
   return (
     <div className="registration-form">
@@ -33,13 +78,13 @@ export default function RegisterPage() {
             type="text"
             className="form-control item"
             name="username"
-            placeholder="Username"
+            placeholder="Username (optional)"
           ></input>
         </div>
         <div className="form-group">
           <input
             onChange={handleInputNewAdmin}
-            type="email"
+            type="text"
             className="form-control item"
             name="email"
             placeholder="Email"
@@ -57,9 +102,9 @@ export default function RegisterPage() {
         <div className="form-group">
           <input
             onChange={handleInputNewAdmin}
-            type="number"
+            type="text"
             className="form-control item"
-            name="phone"
+            name="phoneNumber"
             placeholder="Mobile Number"
           ></input>
         </div>
@@ -73,7 +118,7 @@ export default function RegisterPage() {
           ></input>
         </div>
         <div className="form-group">
-          {loadingForm ? (
+          {loadingRegister ? (
             <button
               className="btn btn-block create-account"
               type="button"

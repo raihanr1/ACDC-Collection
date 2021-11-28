@@ -1,11 +1,52 @@
+import { useEffect } from "react";
 import "./index.css";
-
+import { useDispatch, useSelector } from "react-redux";
+import { getCategories } from "../../store/root-reducer/action/actionProduct";
+import NavbarList from "../NavbarListCategory";
+import { useNavigate } from "react-router-dom";
+import { filerByCategory } from "../../store/root-reducer/action/actionProduct";
 export default function Navbar() {
+  const { category, productLoading, errorProduct } = useSelector(
+    (state) => state
+  );
+  const navigate = useNavigate();
+  const handleHomePage = () => {
+    dispatch(filerByCategory("all"));
+  };
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCategories());
+  }, []);
+  if (productLoading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          marginTop: "250px",
+          marginLeft: "270px",
+          justifyContent: "center",
+          height: "689px",
+        }}
+      >
+        <div
+          className="spinner-grow text-info mr-2"
+          role="status"
+          style={{ width: "200px", height: "200px" }}
+        >
+          <p
+            style={{ textAlign: "center", color: "#e6fff7", marginTop: "90px" }}
+          >
+            Loading...
+          </p>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="container-fluid px-0">
       <nav className="navbar navbar-expand-md navbar-light bg-white p-0">
-        <a className="navbar-brand mr-4">
-          <strong>BBBootstrap</strong>
+        <a className="navbar-brand mr-4" onClick={() => navigate("/")}>
+          <strong>ACDC Collection</strong>
         </a>
         <button
           className="navbar-toggler mr-3"
@@ -22,6 +63,7 @@ export default function Navbar() {
           <ul className="navbar-nav">
             <li className="nav-item">
               <a
+                onClick={() => handleHomePage()}
                 className="nav-link"
                 id="navbarDropdown1"
                 role="button"
@@ -32,30 +74,9 @@ export default function Navbar() {
                 Products<span className="fa fa-angle-down"></span>
               </a>
             </li>
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                id="navbarDropdown2"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Resources<span className="fa fa-angle-down"></span>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                id="navbarDropdown3"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Customers<span className="fa fa-angle-down"></span>
-              </a>
-            </li>
+            {category.map((el) => {
+              return <NavbarList key={el.id} category={el} />;
+            })}
           </ul>
         </div>
       </nav>

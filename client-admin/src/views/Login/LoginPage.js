@@ -1,11 +1,49 @@
-import { useState } from "react";
-import postAPI from "../../helper/PostAPI";
-import CSS from "./index.css";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import "./index.css";
+import Swal from "sweetalert2";
+import { userLogin } from "../../store/root-reducer/action/actionUser";
+import { Navigate, useNavigate } from "react-router-dom";
+import {
+  ACTION_USER_LOGIN_SUCCESS,
+  ACTION_USER_LOGIN_ERROR,
+} from "../../store/root-reducer/action-type/actionType";
 export default function LoginPage() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [userInput, setInput] = useState({
     email: "",
     password: "",
   });
+  const { loginSuccess, loginLoading, loginError } = useSelector(
+    (state) => state.user
+  );
+  useEffect(() => {
+    if (loginError) {
+      dispatch({
+        type: ACTION_USER_LOGIN_ERROR,
+        payload: null,
+      });
+      loginError.json().then((data) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: data.message,
+        });
+      });
+    }
+  }, [loginError]);
+  useEffect(() => {
+    if (loginSuccess) {
+      localStorage.setItem("access_token", loginSuccess.access_token);
+      dispatch({
+        type: ACTION_USER_LOGIN_SUCCESS,
+        payload: null,
+      });
+      if (loginSuccess === null) {
+      }
+    }
+  }, [loginSuccess]);
   let handleUserLogin = (e) => {
     let input = {
       ...userInput,
@@ -15,8 +53,15 @@ export default function LoginPage() {
   };
   let handleSubmitFormLogin = (e) => {
     e.preventDefault();
-    console.log(userInput, ">>> asup gengs");
+    dispatch(userLogin(userInput));
   };
+  if (
+    localStorage.getItem("access_token") &&
+    localStorage.getItem("access_token") !== "undefined" &&
+    !loginLoading
+  ) {
+    return <Navigate to="/" />;
+  }
   return (
     <div className="container-fluid ps-md-0">
       <div className="row g-0">
@@ -30,7 +75,7 @@ export default function LoginPage() {
                   <form onSubmit={handleSubmitFormLogin}>
                     <div className="form-floating mb-3">
                       <input
-                        type="email"
+                        type="text"
                         className="form-control"
                         id="floatingInput"
                         name="email"
@@ -52,12 +97,27 @@ export default function LoginPage() {
                     </div>
 
                     <div className="d-grid">
-                      <button
-                        className="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2"
-                        type="submit"
-                      >
-                        Sign in
-                      </button>
+                      {loginLoading ? (
+                        <button
+                          className="btn btn-primary"
+                          type="button"
+                          disabled
+                        >
+                          <span
+                            className="spinner-grow spinner-grow-sm"
+                            role="status"
+                            aria-hidden="true"
+                          ></span>
+                          Loading...
+                        </button>
+                      ) : (
+                        <button
+                          className="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2"
+                          type="submit"
+                        >
+                          Sign in
+                        </button>
+                      )}
                     </div>
                   </form>
                 </div>

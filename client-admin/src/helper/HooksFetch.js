@@ -16,7 +16,6 @@ export default function useFetch(url) {
       .then((data) => {
         setLoading(false);
         setData(data);
-        console.log(data, ">>> masuk data");
       })
       .catch((err) => {
         setError(err);

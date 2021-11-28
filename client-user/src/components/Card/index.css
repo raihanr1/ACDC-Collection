@@ -1,8 +1,3 @@
-.container {
-  max-width: 1200px;
-  display: flex;
-  margin-top: 30px;
-}
 .profile-card {
   max-width: 300px;
   background-color: #fff;
@@ -17,6 +12,7 @@
 
 .profile-card img {
   transition: all linear 0.25s;
+  width: 400px;
 }
 
 .profile-card .profile-name {
