@@ -1,7 +1,14 @@
-import CSS from "./TableColumnStyle.css";
-
+import "./TableColumnStyle.css";
+import { deleteProduct } from "../store/root-reducer/action/actionProduct";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 export default function TableColumn(props) {
   let currencyIDR = `Rp. ${props.product.price.toLocaleString("id-ID")},00`;
+  const { errorDelete, loadingDelete } = useSelector((state) => state.product);
+  const dispatch = useDispatch();
+  const handleDeletedProduct = () => {
+    dispatch(deleteProduct(props.product.id));
+  };
   return (
     <tr>
       <td>{props.product.name}</td>
@@ -17,11 +24,17 @@ export default function TableColumn(props) {
           }}
         ></img>
       </td>
-      <td>-</td>
+      <td>{props.product.Category.name}</td>
 
       <td>
-        <span className="badge bg-success">Edit</span>
-        <span style={{ marginLeft: "5px" }} className="badge bg-success">
+        <Link to={`/new-product?id=${props.product.id}`}>
+          <span className="badge bg-success">Edit</span>
+        </Link>
+        <span
+          style={{ marginLeft: "5px" }}
+          className="badge bg-success"
+          onClick={() => handleDeletedProduct()}
+        >
           Delete
         </span>
       </td>
