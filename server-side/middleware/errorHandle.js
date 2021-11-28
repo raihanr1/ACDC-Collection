@@ -11,7 +11,7 @@ function errorHandle(err, req, res, next) {
     res.status(400).json(err);
   } else if (err.name === "SequelizeUniqueConstraintError") {
     res.status(401).json({
-      message: err.errors[0].message,
+      message: "Email must be unique",
     });
   } else if (
     err.message === "Category not found" ||
@@ -39,4 +39,4 @@ function errorHandle(err, req, res, next) {
   }
 }
 
-module.exports = errorHandle;
+module.exports = { errorHandle };
