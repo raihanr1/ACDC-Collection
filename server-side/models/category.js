@@ -35,6 +35,9 @@ module.exports = (sequelize, DataTypes) => {
           notEmpty: {
             msg: "Image Url is required",
           },
+          isUrl: {
+            msg: "Invalid format image",
+          },
         },
       },
     },

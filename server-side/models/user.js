@@ -44,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
             msg: "Password is required",
           },
           customValidator(value) {
-            if (value.length < 5) {
+            if (value.length < 5 && value) {
               throw new Error("Minimum password is 5 letters");
             }
           },
@@ -67,10 +67,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           notNull: {
-            msg: "Phone number is required",
+            msg: "Mobile number is required",
           },
           notEmpty: {
-            msg: "Phone number is required",
+            msg: "Mobile number is required",
           },
         },
       },
@@ -89,12 +89,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "User",
       hooks: {
         beforeCreate(user) {
           user.password = hashedPassword(user.password);
         },
       },
+      modelName: "User",
     }
   );
   return User;

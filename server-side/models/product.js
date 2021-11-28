@@ -63,6 +63,9 @@ module.exports = (sequelize, DataTypes) => {
           notEmpty: {
             msg: "Image URL is required",
           },
+          isUrl: {
+            msg: "Invalid format image",
+          },
         },
       },
       CategoryId: {
@@ -96,13 +99,15 @@ module.exports = (sequelize, DataTypes) => {
       hooks: {
         beforeCreate(product) {
           if (product.name) {
-            let slug = this.name.split(" ").join("-");
+            console.log(product.name, ">>>>>>>>");
+            let slug = product.name.split(" ").join("-");
+            console.log(product.name.split(" "), "apa");
             product.slug = slug;
           }
         },
         beforeUpdate(product) {
           if (product.name) {
-            let slug = this.name.split(" ").join("-");
+            let slug = product.name.split(" ").join("-");
             product.slug = slug;
           }
         },
