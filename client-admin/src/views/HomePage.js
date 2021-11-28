@@ -1,10 +1,12 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, NavLink, useNavigate } from "react-router-dom";
 import TableColumn from "../components/TableColumn";
 import TableRow from "../components/TableRow";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllProduct } from "../store/root-reducer/action/actionProduct";
 import { useEffect } from "react";
+import { ACTION_USER_LOGIN_SUCCESS } from "../store/root-reducer/action-type/actionType";
 export default function HomePage() {
+  const { loginSuccess } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const { product, isLoadingProduct, isErrorProduct } = useSelector(
     (state) => state.product
@@ -12,9 +14,12 @@ export default function HomePage() {
   useEffect(() => {
     dispatch(getAllProduct());
   }, []);
-  let navigate = useNavigate();
   let handleLogOutUser = (e) => {
     localStorage.removeItem("access_token");
+    dispatch({
+      type: ACTION_USER_LOGIN_SUCCESS,
+      payload: false,
+    });
   };
   if (isErrorProduct) {
     return (
@@ -104,7 +109,7 @@ export default function HomePage() {
                       aria-labelledby="dropdownMenuButton"
                     >
                       <li>
-                        <h6 className="dropdown-header">Category</h6>
+                        <h6 className="dropdown-header">Option</h6>
                       </li>
                       <li>
                         <Link to="/new-category" className="dropdown-item">
@@ -118,8 +123,10 @@ export default function HomePage() {
                   <a data-bs-toggle="dropdown" aria-expanded="false">
                     <div className="user-menu d-flex">
                       <div className="user-name text-end me-3">
-                        <h6 className="mb-0 text-gray-600">John Doe</h6>
-                        <p className="mb-0 text-sm text-gray-600">
+                        <p
+                          className="mb-0 text-sm text-gray-600"
+                          style={{ marginTop: "10px" }}
+                        >
                           Administrator
                         </p>
                       </div>
@@ -135,7 +142,7 @@ export default function HomePage() {
                     aria-labelledby="dropdownMenuButton"
                   >
                     <li>
-                      <h6 className="dropdown-header">Hello, John!</h6>
+                      <h6 className="dropdown-header">Hello !</h6>
                     </li>
                     <li>
                       <hr className="dropdown-divider" />
@@ -145,7 +152,6 @@ export default function HomePage() {
                         className="dropdown-item"
                         onClick={() => {
                           handleLogOutUser();
-                          navigate("/login");
                         }}
                       >
                         <i className="icon-mid bi bi-box-arrow-left me-2"></i>

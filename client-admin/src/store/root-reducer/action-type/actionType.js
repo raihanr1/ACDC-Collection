@@ -21,3 +21,5 @@ export const ACTION_USER_DELETE_ERROR = "user/errorDelete";
 export const ACTION_USER_GET_PRODUCT_SUCCESS = "user/getProductSuccess";
 export const ACTION_USER_GET_PRODUCT_LOADING = "user/getProductLoading";
 export const ACTION_USER_GET_PRODUCT_ERROR = "user/errorGetProduct";
+
+export const ACTION_USER_PRODUCT_CATEGORY = "user/getCategories";

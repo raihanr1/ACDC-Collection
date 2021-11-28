@@ -8,11 +8,20 @@ import { Routes, Route } from "react-router-dom";
 import RequireAuth from "./components/RequireAuth";
 import LoginAuth from "./components/LoginAuth";
 import Navbar from "./components/NavbarPage";
-import ProductImagePage from "./views/ProductImage/ProductImagePage";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 function App() {
+  const { loginSuccess } = useSelector((state) => state.user);
+  useEffect(() => {
+    console.log("");
+  }, [loginSuccess]);
   return (
     <>
-      {localStorage.getItem("access_token") ? <Navbar /> : null}
+      {localStorage.getItem("access_token") &&
+      localStorage.getItem("access_token") !== "undefined" &&
+      localStorage.getItem("access_token") !== null ? (
+        <Navbar />
+      ) : null}
       <Routes>
         <Route
           path="/"
