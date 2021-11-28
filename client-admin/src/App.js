@@ -8,6 +8,7 @@ import { Routes, Route } from "react-router-dom";
 import RequireAuth from "./components/RequireAuth";
 import LoginAuth from "./components/LoginAuth";
 import Navbar from "./components/NavbarPage";
+import DetailPage from "./views/DetailPage";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 function App() {
@@ -39,6 +40,7 @@ function App() {
             </LoginAuth>
           }
         ></Route>
+        <Route path="/:slug" element={<DetailPage />}></Route>
         <Route
           path="/register"
           element={
