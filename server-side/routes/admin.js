@@ -1,8 +1,9 @@
-const router = require("express").Router();
+const express = require("express");
+const router = express.Router();
 const Controller = require("../controllers/adminController");
-const authentication = require("../middleware/authentication");
-const authorization = require("../middleware/authorization");
-const errorHandle = require("../middleware/errorHandle");
+const { authentication } = require("../middleware/authentication");
+const { authorization } = require("../middleware/authorization");
+const { errorHandle } = require("../middleware/errorHandle");
 
 router.post("/login", Controller.adminLogin);
 router.post(

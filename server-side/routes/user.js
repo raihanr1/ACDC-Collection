@@ -1,6 +1,10 @@
-const router = require("express").Router();
+const express = require("express");
+const router = express.Router();
 const Controller = require("../controllers/userController");
-router.get("/");
-router.get("/images", Controller.getAllProducts);
+const { errorHandle } = require("../middleware/errorHandle");
+router.get("/", Controller.getAllProducts);
+router.get("/categories", Controller.getAllCategories);
+router.get("/images");
+router.use(errorHandle);
 
 module.exports = router;
