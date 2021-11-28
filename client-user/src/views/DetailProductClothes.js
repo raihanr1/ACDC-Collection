@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { useParams } from "react-router";
 export default function DetailProduct() {
   const params = useParams();
-  console.log(params, ">>>> params");
   const { product } = useSelector((state) => state);
   const dispatch = useDispatch();
   useEffect(() => {

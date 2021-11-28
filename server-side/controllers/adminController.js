@@ -122,7 +122,6 @@ class Controller {
         slug: data.slug,
       });
     } catch (error) {
-      console.log(error, ">>> error");
       t.rollback();
       next(error);
     }

@@ -4,7 +4,6 @@ import { useParams } from "react-router";
 export default function DetailPage(props) {
   const params = useParams();
   const { product } = useSelector((state) => state.product);
-  console.log(product, ">> asup teu");
   let productFiltered = [];
   if (product.length) {
     productFiltered = product.filter((el) => el.slug === params.slug);

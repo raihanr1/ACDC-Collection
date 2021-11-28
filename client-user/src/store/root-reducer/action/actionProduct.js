@@ -31,7 +31,6 @@ export function fetchAllProduct(params) {
         }
       })
       .then((data) => {
-        console.log(data, ">>>");
         dispatch({
           type: HANDLE_ACTION_GET_ALL_PRODUCT,
           payload: data,
@@ -76,7 +75,6 @@ export function getCategories(params) {
         }
       })
       .then((data) => {
-        console.log(data, ">> asup");
         dispatch({
           type: HANDLE_GET_CATEGORY,
           payload: data,

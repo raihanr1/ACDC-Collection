@@ -99,9 +99,7 @@ module.exports = (sequelize, DataTypes) => {
       hooks: {
         beforeCreate(product) {
           if (product.name) {
-            console.log(product.name, ">>>>>>>>");
             let slug = product.name.split(" ").join("-");
-            console.log(product.name.split(" "), "apa");
             product.slug = slug;
           }
         },

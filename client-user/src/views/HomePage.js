@@ -11,7 +11,6 @@ export default function HomePage() {
   let productFilter = [];
   let theme = "This Is Our Product";
   if (filter !== "all" && filter !== null && product.length) {
-    console.log(product, "ada emng???");
     theme = `This Is Our Product of ${filter.name}`;
     productFilter = product.filter((el) => el.CategoryId == filter.id);
   } else if (product.length) {

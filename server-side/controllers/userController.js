@@ -21,7 +21,6 @@ class Controller {
           exclude: ["createdAt", "updatedAt", "AuthorId"],
         },
       });
-      console.log(response[0], ">>>>");
       res.status(200).json(response);
     } catch (error) {
       next(error);
