@@ -1,7 +1,5 @@
-# P3-Challenge-1
-
-- Tema Aplikasi: ...
-- CSS Framework: ...
+- Tema Aplikasi: Brand Show Case
+- CSS Framework: Bootstrap
 
 Struktur Folder:
 
@@ -13,7 +11,7 @@ Struktur Folder:
 
 Target:
 
-- [ X ] Lecture - React Class Component
+- [ X ] React Class Component
 - [ X ] State
 - [ X ] Props (state, function)
 - [ X ] Event Handling (onClick, onChange, onSubmit)
@@ -30,15 +28,11 @@ Target:
 
 ...
 
-> Hari ini saya belajar React Component. Saya memahami bagaimana cara React bekerja. Lifecycle yang sudah saya coba adalah componentDidMount yang digunakan untuk fetch data.
-> Saya memilih CSS Framework bootstrap
-> Pada tugas ini, saya memilih Tema Brand ShowCase dengan mengambil referensi dari website Deus X Machina Canggu.
-
 ## W1D2
 
 Target:
 
-- [ X ] Lecture - React Function Component & Hooks
+- [ X ] React Function Component & Hooks
 - [ X ] Membuat state dengan useState
 - [ X ] Lifecycle dengan useEffect
 - [ X ] Custom hooks
@@ -49,17 +43,15 @@ Target:
 
 ...
 
-> Hari ini saya belajar React Component lebih lanjut lagi. Saya memahami bagaimana cara React bekerja lebih lanjut. Mencoba functional component, lifecycle, custom hooks, dan cara kerja di setiap bagian fungsi dari bagian-bagian react
-
 ## W1D3
 
 Target:
 
-- [ X ] Lecture - React-Router
+- [ X ] React-Router
 - [ X ] Membuat router user-side (min: home, detail)
 - [ X ] Membuat router admin-side (min: login, add admin, CRUD main entitas, CRUD another entitas)
 - [ X ] Membuat privateRoute untuk admin
-- [ X ] Lecture - Redux
+- [ X ] Redux
 - [ X ] Create Store
 - [ X ] Create Reducer
 - [ X ] Create Action
@@ -72,7 +64,7 @@ Target:
 
 Target:
 
-- [ X ] Lecture - Redux-thunk (handle async)
+- [ X ] Redux-thunk (handle async)
 - [ X ] Create server using express.js, postgreSQL and Sequelize
 - [ X ] Describe associations between tables
 
@@ -84,9 +76,9 @@ Target:
 
 Target:
 
-- [ ] Lecture - SQL Transaction
-- [ ] Membuat transaction saat membuat entitas baru pada main table. Pastikan ada assosiasi di dalamnya
-- [ ] LC Simulation
+- [ X ] SQL Transaction
+- [ X ] Membuat transaction saat membuat entitas baru pada main table. Pastikan ada assosiasi di dalamnya
+- [ X ] LC Simulation
 
 **Report:**
 
